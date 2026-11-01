@@ -1,0 +1,11 @@
+market: um_futures
+symbol: BTCUSDT
+base_interval: 1m
+analysis_timeframes:
+  - 15min
+  - 1h
+  - 4h
+  - 1D
+timezone: UTC
+rest_base_url: https://fapi.binance.com
+websocket_base_url: wss://fstream.binance.com/ws

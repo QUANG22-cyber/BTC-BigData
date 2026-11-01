@@ -1,0 +1,25 @@
+services:
+  app:
+    build: .
+    image: btc-pulse:local
+    working_dir: /app
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config:ro
+    env_file:
+      - path: .env
+        required: false
+    restart: "no"
+
+  collector:
+    image: btc-pulse:local
+    build: .
+    working_dir: /app
+    command: ["python", "-m", "src.ingestion.realtime_collector"]
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config:ro
+    env_file:
+      - path: .env
+        required: false
+    restart: unless-stopped
